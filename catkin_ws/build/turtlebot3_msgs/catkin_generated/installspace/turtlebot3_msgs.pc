@@ -1,0 +1,8 @@
+prefix=/home/emersonboyd/MultiSLAM/catkin_ws/install
+
+Name: turtlebot3_msgs
+Description: Description of turtlebot3_msgs
+Version: 0.1.5
+Cflags: -I/home/emersonboyd/MultiSLAM/catkin_ws/install/include
+Libs: -L/home/emersonboyd/MultiSLAM/catkin_ws/install/lib 
+Requires: std_msgs sensor_msgs message_runtime

@@ -1,0 +1,8 @@
+prefix=/home/emersonboyd/MultiSLAM/catkin_ws/install
+
+Name: turtlebot3_slam
+Description: Description of turtlebot3_slam
+Version: 0.2.1
+Cflags: 
+Libs: -L/home/emersonboyd/MultiSLAM/catkin_ws/install/lib 
+Requires: 
