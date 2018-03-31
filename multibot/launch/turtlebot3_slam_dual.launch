@@ -1,0 +1,13 @@
+<launch>
+  <arg name="tb1ns" default="tb1"/>
+  <arg name="tb2ns" default="tb2"/>
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+
+  <group ns="$(arg tb1ns)">
+     <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch" />
+  </group>
+
+  <group ns="$(arg tb2ns)">
+     <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch" />
+  </group>
+</launch>
