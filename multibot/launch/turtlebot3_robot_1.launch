@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find multibot)/launch/turtlebot3_robot_ns.launch">
+    <arg name="tbns" value="tb1"/>
+  </include>
+</launch>

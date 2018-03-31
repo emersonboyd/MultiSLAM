@@ -1,0 +1,7 @@
+<launch>
+  <arg name="tbns" />
+
+  <group ns="$(arg tbns)">
+	  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_robot.launch"/>
+  </group>
+</launch>
