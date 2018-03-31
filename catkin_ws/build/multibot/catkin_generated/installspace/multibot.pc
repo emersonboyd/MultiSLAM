@@ -1,8 +1,0 @@
-prefix=/home/emersonboyd/MultiSLAM/catkin_ws/install
-
-Name: multibot
-Description: Description of multibot
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/emersonboyd/MultiSLAM/catkin_ws/install/lib 
-Requires: 
