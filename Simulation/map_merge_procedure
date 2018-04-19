@@ -1,0 +1,19 @@
+
+Run the following command each in new terminal to do the simualtion:
+
+roscore
+
+roslaunch turtlebot3_gazebo turtlebot3_house.launch
+
+roslaunch turtlebot3_gazebo multi_turtlebot3.launch
+
+ $ roslaunch turtlebot3_gazebo multi_turtlebot3_slam.launch ns:=tb3_0
+ $ roslaunch turtlebot3_gazebo multi_turtlebot3_slam.launch ns:=tb3_1
+ $ roslaunch turtlebot3_gazebo multi_turtlebot3_slam.launch ns:=tb3_2
+
+roslaunch turtlebot3_gazebo multi_map_merge.launch
+
+rosrun rviz rviz -d `rospack find turtlebot3_gazebo`/rviz/multi_turtlebot3_slam.rviz
+
+rosrun turtlebot3_teleop turtlebot3_teleop_key cmd_vel:=tb3_0/cmd_vel
+
