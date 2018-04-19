@@ -1,0 +1,131 @@
+Robot
+export ROS_MASTER_URI=http://192.168.1.138:11311
+export ROS_HOSTNAME=192.168.1.53
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_bringup turtlebot3_robot.launch
+
+WIFI
+sudo iwconfig wlan0 essid NEUFR-RTN12-03
+sudo ifconfig wlan0 up
+sudo dhclient wlan0 ?can we set manually 
+
+Laptop/REMOTE
+ssh -t tb3@192.168.1.53 "sudo date -s '$(date)'"
+export ROS_MASTER_URI=http://192.168.1.138:11311
+export ROS_HOSTNAME=192.168.1.138
+export TURTLEBOT3_MODEL=burger
+roscore &
+
+% SIMPLE DEMO
+roslaunch turtlebot3_bringup turtlebot3_remote.launch &
+rosrun rviz rviz -d `rospack find turtlebot3_description`/rviz/model.rviz
+
+% SLAM DEMO
+roslaunch turtlebot3_slam turtlebot3_slam.launch
+rosrun rviz rviz -d `rospack find turtlebot3_slam`/rviz/turtlebot3_slam.rviz
+
+% TELEOP
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+rosrun rviz rviz -d `rospack find turtlebot3_description`/rviz/model.rviz
+
+% NAVIGATION
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
+rosrun rviz rviz -d `rospack find turtlebot3_navigation`/rviz/turtlebot3_nav.rviz
+
+MASTER
+https://aixperts.blogspot.com/2012/11/configuring-ntp-server-without-internet.html
+sudo apt-get install ntp
+sudo nano /etc/ntp.conf
+server 127.127.1.0
+fudge 127.127.1.0 stratum 10
+
+ROBOT
+sudo apt-get install chrony
+sudo nano /etc/chrony/chrony.conf
+server 12.139.41.138
+
+sudo /etc/init.d/chrony stop
+sudo ntpdate -b 192.168.1.138
+sudo /etc/init.d/chrony start
+sudo chronyd -q 'server 192.168.1.138 iburst'
+
+
+Next Steps:
+1. Frontier Exploration with 1 robot
+	2 robots w/ shared maps?
+2. combining point clouds in rviz (2 rooms)
+	get ros bags of data to work w/o robots
+3. communicate between two turtlebots w/ router in middle
+	look into source code of launch files for bringup.launch, remote.launch and slam.launch and see what packages is publishes/subscribes to so we can figure out what we need to communicate between robots
+	no router?
+
+
+
+
+Frontier exploration
+sudo apt-get install ros-kinetic-turtlebot-navigation
+sudo apt-get install ros-kinetic-frontier-exploration ros-kinetic-navigation-stage
+
+
+Maybe goals:
+accept position updates with slam (gmapping/amcl) 
+write a bash script that updates the time if there's a ntp server
+
+
+///////////////////////////////////////////////////////////////////
+GOAL
+
+header: 
+  seq: 0
+  stamp: 
+    secs: 1522792989
+    nsecs: 632896848
+  frame_id: ''
+goal_id: 
+  stamp: 
+    secs: 1522792989
+    nsecs: 632897026
+  id: "/explore_client-2-1522792989.632897026"
+goal: 
+  explore_boundary: 
+    header: 
+      seq: 5
+      stamp: 
+        secs: 1522792983
+        nsecs: 557568790
+      frame_id: "map"
+    polygon: 
+      points: 
+        - 
+          x: -0.0572924129665
+          y: -0.85383194685
+          z: -0.00143432617188
+        - 
+          x: 0.0439597629011
+          y: -1.34628760815
+          z: -0.00143432617188
+        - 
+          x: -0.964362919331
+          y: -0.964527547359
+          z: -0.00143432617188
+  explore_center: 
+    header: 
+      seq: 9
+      stamp: 
+        secs: 1522792989
+        nsecs: 414084106
+      frame_id: "map"
+    point: 
+      x: -0.213393911719
+      y: -1.04887163639
+      z: -0.00143432617188
+
+
+
+
+illegal bounds change costmap explore boundary
+
+DWA planner failed to produce path.
+
+
+
